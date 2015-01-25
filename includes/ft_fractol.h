@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/25 15:26:09 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/25 16:52:45 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define WINDOW_H 500
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)
 # define PLACE_IMG(x, y) ((y * (WINDOW_W * 4)) + x * 4)
+# define RGB(c, r, g, b) (c[0] = r, c[1] = g, c[2] = b)
 # define CENTERX (WINDOW_W / 2)
 # define CENTERY (WINDOW_H / 2)
 # define MOD(z)	(((z->r * z->r) + (z->i * z->i)))
