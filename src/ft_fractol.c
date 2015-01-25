@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/23 16:54:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/25 15:49:23 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,29 @@ void	init_simg(t_img *simg)
 	simg->imgdata = NULL;
 }
 
-char	check_name(char *name)
+void	init_inf(t_inf *inf, int *tab)
+{
+	inf->line = &tab[0];
+	inf->c = &tab[1];
+	inf->px = &tab[2];
+	inf->type = &tab[3];
+	inf->zoom = &tab[4];
+}
+
+void	check_name(char *name, int *i)
 {
 	if (!(ft_strcmp("Mandelbrot", name)))
-		return (1);
+		*i = 1;
 	else if (!(ft_strcmp("Julia", name)))
-		return (2);
+		*i = 2;
 	else
-		return (0);
+		*i = 0;
 }
 
 int		ft_fractol(t_mle *env, char *name)
 {
-	char type;
-
-	type = check_name(name);
-	if ((!(type)))
+	check_name(name, C_IT(env));
+	if (!(*C_IT(env)))
 		return (-1);
 	else
 	{
@@ -51,9 +58,16 @@ int		main(int argc, char **argv)
 		t_mle	env;
 		t_img	simg;
 		t_draw	sdraw;
+		t_inf	inf;
+		int		tab[5];
 
+		tab[0] = WINDOW_W;
+		tab[1] = 1;
+		tab[2] = (4 * sizeof(char));
+		init_inf(&inf, tab);
 		init_simg(&simg);
 		sdraw.simg = &simg;
+		sdraw.inf = &inf;
 		env.content = &sdraw;
 		if ((env.mlx = mlx_init()))
 		{

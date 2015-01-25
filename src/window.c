@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/23 16:57:50 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/25 15:32:28 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		key_hook(int keycode, t_mle *env)
 
 int		expose_hook(t_mle *env)
 {
-	env = env;
-//	print_fract(env);
+	print_fract(env);
 	return (0);
 }
