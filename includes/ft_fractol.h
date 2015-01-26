@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/25 16:52:45 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/26 19:11:02 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define CENTERY (WINDOW_H / 2)
 # define MOD(z)	(((z->r * z->r) + (z->i * z->i)))
 # define MANDELBROT_X1 -2.1
-# define MANDELBROT_X2 -0.6
+# define MANDELBROT_X2 0.6
 # define MANDELBROT_Y1 -1.2
 # define MANDELBROT_Y2 1.2
 # define ZOOM_X(x1, x2) ((WINDOW_W / (x2 - x1)))
@@ -39,6 +39,14 @@
 # define C_IP(x)	((t_draw*)x->content)->inf->px
 # define C_IC(x)	((t_draw*)x->content)->inf->c
 # define C_IT(x)	((t_draw*)x->content)->inf->type
+# define C_FR(x)	((t_draw*)x->content)->inf->fra
+# define ECHAP		0xFF1B
+# define UP			0xFF52
+# define DOWN		0xFF54
+# define LEFT		0xFF51
+# define RIGHT		0xFF53
+# define PLUS		0xFFAB
+# define MINS		0xFFAD
 
 typedef struct		s_mle
 {
@@ -59,6 +67,18 @@ typedef struct		s_nc
 	long double		i;
 }					t_nc;
 
+typedef	struct		s_fra
+{
+	long double		x1;
+	long double		x2;
+	long double		y1;
+	long double		y2;
+	int				*rgb;
+	unsigned int	it;
+	unsigned int	x;
+	unsigned int	y;
+}					t_fra;
+
 typedef	struct		s_inf
 {
 	int				*type;
@@ -66,6 +86,7 @@ typedef	struct		s_inf
 	int				*line;
 	int				*px;
 	int				*c;
+	t_fra			*fra;
 }					t_inf;
 
 typedef	struct		s_draw
@@ -81,4 +102,5 @@ void	print_fract(t_mle *env);
 int		key_hook(int keycode, t_mle *env);
 int		expose_hook(t_mle *env);
 void	key_echap(t_mle *env);
+int		mouse_hook(int button, int x, int y, t_mle *env);
 #endif
