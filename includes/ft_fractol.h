@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 15:54:33 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 18:49:27 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define C_IT(x)	((t_draw*)x->content)->inf->type
 # define C_FR(x)	((t_draw*)x->content)->inf->fra
 # define C_CO(x)	((t_draw*)x->content)->inf->col1
+# define C_IF(x)	((t_draw*)x->content)->inf
 # define ECHAP		0xFF1B
 # define UP			0xFF52
 # define DOWN		0xFF54
@@ -50,6 +51,7 @@
 # define MINS		0xFFAD
 # define K_C		99
 # define K_X		120
+# define K_P		112
 
 typedef struct		s_mle
 {
@@ -89,7 +91,9 @@ typedef	struct		s_inf
 	int				*line;
 	int				*px;
 	int				*c;
-	float			col1;
+	int				col1;
+	long double		cr;
+	long double		ci;
 	t_fra			*fra;
 }					t_inf;
 

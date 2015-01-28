@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:17:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 16:20:28 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 18:47:50 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	key_move(t_mle *env, int type, float mode)
 
 void	modify_color(t_mle *env, int mode)
 {
-	C_CO(env) += mode;
-	ft_putnbr(C_CO(env));
+	if (C_CO(env) + mode >= 40 || C_CO(env) + mode <= -40)
+		C_CO(env) += mode;
+	else
+		C_CO(env) += mode * 2;
 }

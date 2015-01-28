@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 16:34:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 18:34:13 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		mouse_hook(int button, int x, int y, t_mle *env)
 }
 int		key_hook(int keycode, t_mle *env)
 {
-//	ft_putnbr(keycode);
+	ft_putnbr(keycode);
 	ft_putchar('\n');
 	if (keycode == ECHAP)
 		key_echap(env);
@@ -64,6 +64,8 @@ int		key_hook(int keycode, t_mle *env)
 		modify_color(env, 2);
 	if (keycode == K_X)
 		modify_color(env, -2);
+	if (keycode == K_P)
+		C_CO(env) = 0;
 	mlx_destroy_image(env->mlx, C_IM(env));
 	(C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
 	expose_hook(env);

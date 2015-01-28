@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 16:30:59 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 18:48:29 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb)
 	inf->zoom = &tab[4];
 	inf->fra = sfra;
 	inf->fra->rgb = rgb;
-	inf->col1 = 40;
+	inf->col1 = 20;
+	inf->cr	= 0.285;
+	inf->ci = 0.01;
 }
 
