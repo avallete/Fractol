@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/26 19:11:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 15:54:33 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define C_IC(x)	((t_draw*)x->content)->inf->c
 # define C_IT(x)	((t_draw*)x->content)->inf->type
 # define C_FR(x)	((t_draw*)x->content)->inf->fra
+# define C_CO(x)	((t_draw*)x->content)->inf->col1
 # define ECHAP		0xFF1B
 # define UP			0xFF52
 # define DOWN		0xFF54
@@ -47,6 +48,8 @@
 # define RIGHT		0xFF53
 # define PLUS		0xFFAB
 # define MINS		0xFFAD
+# define K_C		99
+# define K_X		120
 
 typedef struct		s_mle
 {
@@ -86,6 +89,7 @@ typedef	struct		s_inf
 	int				*line;
 	int				*px;
 	int				*c;
+	float			col1;
 	t_fra			*fra;
 }					t_inf;
 
@@ -95,12 +99,72 @@ typedef	struct		s_draw
 	t_inf			*inf;
 }					t_draw;
 
+/*
+** ----------
+** Arguments checking functions
+** ----------
+*/
+
+void	check_name(char *name, int *i);
+void	print_fract(t_mle *env);
+
+/*
+** ----------
+** Init stucture functions
+** ----------
+*/
+
+void	init_simg(t_img *simg);
+void	init_xymandel(t_fra *fra);
+void	init_fra(t_fra *fra, int type);
+void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb);
+
+/*
+** ----------
+** Window hook functions
+** ----------
+*/
+
+int		expose_hook(t_mle *env);
+int		key_hook(int keycode, t_mle *env);
+int		mouse_hook(int button, int x, int y, t_mle *env);
+
+/*
+** ----------
+** Keyboard key functions
+** ----------
+*/
+
+void	key_echap(t_mle *env);
+void	zoom(t_mle *env, int mode);
+int		modify_prec(t_mle *env, int mode);
+void	key_move(t_mle *env, int type, float mode);
+void	modify_color(t_mle *env, int mode);
+
+/*
+** ----------
+** Create && print fractales
+** ----------
+*/
+
+/*
+** Mandelbrot 
+*/
+void	print_mandelbrot(t_mle *env);
+void	create_mandelbrot(t_mle *env);
+unsigned int	it_mandel(t_nc z, t_nc c, t_mle *env);
+
+/*
+** Julia 
+*/
+void	print_julia(t_mle *env);
+void	create_julia(t_mle *env);
+
+/*
+** ----------
+** Draw 
+** ----------
+*/
 
 void	draw_to_img(t_mle *env, unsigned int place, int *rgb);
-void	print_mandelbrot(t_mle *env);
-void	print_fract(t_mle *env);
-int		key_hook(int keycode, t_mle *env);
-int		expose_hook(t_mle *env);
-void	key_echap(t_mle *env);
-int		mouse_hook(int button, int x, int y, t_mle *env);
 #endif

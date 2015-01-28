@@ -6,26 +6,12 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/26 19:48:55 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/28 16:34:02 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-void	zoom(t_mle *env, int mode)
-{
-	long double ex;
-	long double ey;
-
-	mode > 0 ? ((ex = (C_FR(env)->x2 - C_FR(env)->x1) / 5)) :\
-	((ex = (C_FR(env)->x1 - C_FR(env)->x2) / 5));
-	mode > 0 ? ((ey = (C_FR(env)->y2 - C_FR(env)->y1) / 5)) :\
-	((ey = (C_FR(env)->y1 - C_FR(env)->y2) / 5));
-	C_FR(env)->x1 += ex;
-	C_FR(env)->x2 -= ex;
-	C_FR(env)->y1 += ey;
-	C_FR(env)->y2 -= ey;
-}
 
 void	controled_zoom(t_mle *env, int x, int y, int mode)
 {
@@ -56,27 +42,28 @@ int		mouse_hook(int button, int x, int y, t_mle *env)
 	expose_hook(env);
 	return (0);
 }
-
-int		modify_prec(t_mle *env, int mode)
-{
-	C_FR(env)->it += mode;
-	return (0);
-}
-
 int		key_hook(int keycode, t_mle *env)
 {
-	ft_putnbr(keycode);
+//	ft_putnbr(keycode);
 	ft_putchar('\n');
 	if (keycode == ECHAP)
 		key_echap(env);
 	if (keycode == UP)
-		zoom(env, 1);
+		key_move(env, 2, 0.01);
 	if (keycode == DOWN)
-		zoom(env, -1);
+		key_move(env, 2, -0.01);
+	if (keycode == LEFT)
+		key_move(env, 1, 0.01);
+	if (keycode == RIGHT)
+		key_move(env, 1, -0.01);
 	if (keycode == PLUS)
 		modify_prec(env, 10);
 	if (keycode == MINS && C_FR(env)->it > 20)
 		modify_prec(env, -10);
+	if (keycode == K_C)
+		modify_color(env, 2);
+	if (keycode == K_X)
+		modify_color(env, -2);
 	mlx_destroy_image(env->mlx, C_IM(env));
 	(C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
 	expose_hook(env);
