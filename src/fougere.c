@@ -6,31 +6,35 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 15:23:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 19:27:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/30 19:48:51 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-void	fill_rect(t_mle *env, int x, int y, int xs, int ys, int mode)
+void	fill_rect(t_mle *env, int x, int y, int x2, int y2, int mode)
 {
-	int i;
-	int e;
+	int tmp;
+	int inc;
+	int	incy;
 
+	tmp = x;
+	x2 > x ? (inc = 1) : (inc = -1);
+	y2 > y ? (incy = 1): (incy = -1);
 	if (mode)
 		RGB(C_FR(env)->rgb, 0, 255, 0);
 	else
-		RGB(C_FR(env)->rgb, 0, 0, 255);
-	e = 0;
-	while (ys > e)
+		RGB(C_FR(env)->rgb, 0, 0, 0);
+	while (y != y2)
 	{
-		i = 0;
-		while (xs > i)
+		x = tmp;
+		while (x != x2)
 		{
-			draw_to_img(env, PLACE_IMG((i + x), (e + y)), C_FR(env)->rgb);
-			i++;
+			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+			x += inc;
 		}
-		e++;
+		y += incy;
+		draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 	}
 }
 
@@ -54,7 +58,8 @@ void	recurse_sierpinski(t_mle *env, long double x, long double y, long double xs
 
 void	create_sierpinski(t_mle *env)
 {
-	recurse_sierpinski(env, 5, 5, WINDOW_W - 10, WINDOW_H - 10, 3);
+//	fill_rect(env, 5, 5, 10, 10, 1);
+	recurse_sierpinski(env, 0, 0, WINDOW_W, WINDOW_H, 2);
 }
 
 void	print_sierpinski(t_mle *env)

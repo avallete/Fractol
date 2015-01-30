@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 14:41:47 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/30 19:48:58 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int		mouse_hook(int button, int x, int y, t_mle *env)
 		controled_zoom(env, x, y, 1);
 	if (button == 5)
 		controled_zoom(env, x, y, -1);
-	if (button == 3)
-		mlx_hook(env->win, MotionNotify, Button3MotionMask, modify_xy_fract, env);
 	expose_hook(env);
 	return (0);
 }
