@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 16:29:28 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/30 15:16:50 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void	create_mandelbrot(t_mle *env)
 			cm = it_mandel(z, c, env);
 			if (cm == C_FR(env)->it)
 				RGB(C_FR(env)->rgb, 5, 5, 5);
-			else
+			else if (C_CO(env))
 				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*4, cm*255/C_FR(env)->it*C_CO(env)*2, cm*255/C_FR(env)->it*C_CO(env)*3);
+			else
+				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it)), 0);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}

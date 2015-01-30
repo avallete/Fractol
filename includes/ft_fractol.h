@@ -6,13 +6,14 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 18:49:27 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/30 17:32:53 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FRACTOL_H
 # define FT_FRACTOL_H
 # include <libft.h>
+# include <X.h>
 # include <mlx.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -71,6 +72,14 @@ typedef struct		s_nc
 	long double		r;
 	long double		i;
 }					t_nc;
+
+typedef struct		s_rc
+{
+	int		x;
+	int		y;
+	int		xs;
+	int		ys;
+}					t_rc;
 
 typedef	struct		s_fra
 {
@@ -147,6 +156,16 @@ void	modify_color(t_mle *env, int mode);
 
 /*
 ** ----------
+** Mouse keys functions
+** ----------
+*/
+void	controled_zoom(t_mle *env, int x, int y, int mode);
+int		modify_xy_fract(int x, int y, t_mle *env);
+int		modify_col_fract(int x, int y, t_mle *env);
+
+
+/*
+** ----------
 ** Create && print fractales
 ** ----------
 */
@@ -163,6 +182,12 @@ unsigned int	it_mandel(t_nc z, t_nc c, t_mle *env);
 */
 void	print_julia(t_mle *env);
 void	create_julia(t_mle *env);
+
+/*
+** Sierpinski
+*/
+void	print_sierpinski(t_mle *env);
+void	create_sierpinski(t_mle *env);
 
 /*
 ** ----------
