@@ -6,17 +6,31 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 16:53:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/31 18:31:58 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
+void	ft_putsterr(char *str)
+{
+	write(2, str, ft_strlen(str));
+}
+
+void	print_usage(void)
+{
+	ft_putsterr("Usage: ./Fractol [fractal name]\n");
+	ft_putsterr("Corrects names : Mandelbrot, Julia\n");
+}
+
 int		ft_fractol(t_mle *env, char *name)
 {
 	check_name(name, C_IT(env));
 	if (!(*C_IT(env)))
+	{
+		print_usage();
 		return (-1);
+	}
 	else
 	{
 		init_fra(C_FR(env), *C_IT(env));
@@ -59,5 +73,7 @@ int		main(int argc, char **argv)
 				ft_fractol(&env, argv[1]);
 		}
 	}
+	else
+		print_usage();
 	return (0);
 }

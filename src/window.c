@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 19:48:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/31 10:02:11 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int		key_hook(int keycode, t_mle *env)
 	if (keycode == RIGHT)
 		key_move(env, 1, -0.01);
 	if (keycode == PLUS)
-		modify_prec(env, 10);
-	if (keycode == MINS && C_FR(env)->it > 20)
-		modify_prec(env, -10);
+		modify_prec(env, 1);
+	if (keycode == MINS && C_FR(env)->it > 1)
+		modify_prec(env, -1);
 	if (keycode == K_C)
 		modify_color(env, 2);
 	if (keycode == K_X)

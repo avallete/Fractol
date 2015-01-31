@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 15:23:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 19:48:51 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/31 10:30:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,27 @@ void	fill_rect(t_mle *env, int x, int y, int x2, int y2, int mode)
 		RGB(C_FR(env)->rgb, 0, 255, 0);
 	else
 		RGB(C_FR(env)->rgb, 0, 0, 0);
+	while (x != x2)
+	{
+		if (x >= 0)
+		draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+		if (x >= 0)
+		draw_to_img(env, PLACE_IMG(x, y2), C_FR(env)->rgb);
+		x += inc;
+	}
+	if (x >= 0)
+		draw_to_img(env, PLACE_IMG(x, y2), C_FR(env)->rgb);
+	x = tmp;
 	while (y != y2)
 	{
-		x = tmp;
-		while (x != x2)
-		{
-			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
-			x += inc;
-		}
-		y += incy;
+		if (x >= 0)
 		draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+		if (x >= 0)
+		draw_to_img(env, PLACE_IMG(x2, y), C_FR(env)->rgb);
+		y += incy;
 	}
+	if (x >= 0)
+	draw_to_img(env, PLACE_IMG(x2, y), C_FR(env)->rgb);
 }
 
 void	recurse_sierpinski(t_mle *env, long double x, long double y, long double xs, long double ys, int it)
@@ -58,8 +68,7 @@ void	recurse_sierpinski(t_mle *env, long double x, long double y, long double xs
 
 void	create_sierpinski(t_mle *env)
 {
-//	fill_rect(env, 5, 5, 10, 10, 1);
-	recurse_sierpinski(env, 0, 0, WINDOW_W, WINDOW_H, 2);
+	recurse_sierpinski(env, -250, 0, WINDOW_W, WINDOW_H, C_FR(env)->it);
 }
 
 void	print_sierpinski(t_mle *env)

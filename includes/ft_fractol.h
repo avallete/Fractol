@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 19:48:52 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/31 16:33:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,13 @@ void	create_julia(t_mle *env);
 */
 void	print_sierpinski(t_mle *env);
 void	create_sierpinski(t_mle *env);
+
+/*
+** Newton
+*/
+void	print_newton(t_mle *env);
+void	create_newton(t_mle *env);
+unsigned int it_newton(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** ----------

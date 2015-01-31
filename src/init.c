@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 18:44:23 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/31 10:43:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_xymandel(t_fra *fra)
 
 void	init_fra(t_fra *fra, int type)
 {
-	if (type == 1 || type == 2 || type == 3)
+	if (type == 1 || type == 2 || type == 3 || type == 4)
 		init_xymandel(fra);
 }
 
