@@ -6,55 +6,65 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 15:23:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 13:34:08 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 19:12:05 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_sierpinski(int x, int y, t_mle *env)
+void	draw_xline(t_mle *env, int x, int x2, int y)
 {
-	unsigned int cm;
+	int inc;
 
-	cm = 0;
-	while ((x > 0 || y > 0) && (cm < C_FR(env)->it))
+	x2 > x ? (inc = 1) : (inc = -1);
+	draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+	while (x != x2)
+		draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb), x += inc;
+	draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+}
+
+void	fill_rect(t_mle *env, int x, int y, int x2, int y2, int mode)
+{
+	int tmp;
+	int	incy;
+
+	tmp = x;
+	y2 > y ? (incy = 1): (incy = -1);
+	if (mode)
+		RGB(C_FR(env)->rgb, 46, 204, 113, 255);
+	else
+		RGB(C_FR(env)->rgb, 52, 73, 94, 255);
+	while (y != y2)
 	{
-		if (x % 3 == 1 && y % 3 == 1)
-			return (cm);
-		x /= 3;
-		y /= 3;
-		cm++;
+		x = tmp;
+		draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+		draw_xline(env, x, x2, y);
+		y += incy;
 	}
-	return (cm);
+	draw_xline(env, x, x2, y);
+}
+
+void	recurse_sierpinski(t_mle *env, long double x, long double y, long double xs, long double ys, int it)
+{
+	if (it > 0)
+	{
+		fill_rect(env, (int)(x+xs/3), (int)(y + ys/3), (int)(x+2*xs/3), (int)(y+2*ys/3), 0);
+		recurse_sierpinski(env, x, y, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x+xs/3, y, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x+2*xs/3, y, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x, y+ys/3, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x+2*xs/3, y+(ys/3), xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x, y+2*ys/3, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x+xs/3, y+2*ys/3, xs/3, ys/3, it - 1);
+		recurse_sierpinski(env, x+2*xs/3, y+2*ys/3, xs/3, ys/3, it - 1);
+	}
+	else
+		fill_rect(env, (int)x, (int)y, (int)x + xs, (int)y + ys, 1);
 }
 
 void	create_sierpinski(t_mle *env)
 {
-	int y;
-	int x;
-	t_nc z;
-	unsigned int cm;
-
-	y = C_FR(env)->y;
-	while (y < WINDOW_H)
-	{
-		x = C_FR(env)->x;
-		while (x < WINDOW_W)
-		{
-			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
-			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			cm = it_sierpinski(x, y, env);
-			if (cm == C_FR(env)->it)
-				RGB(C_FR(env)->rgb, 5, 5 + cm, 5, 255);
-			else if (C_CO(env))
-				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*C_IF(env)->cr, cm*255/C_FR(env)->it*C_CO(env), cm*255/C_CO(env)*C_IF(env)->ci, cm*255/C_FR(env)->it);
-			else
-				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it))*C_IF(env)->cr, 0*C_IF(env)->ci, 255);
-			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
-			x++;
-		}
-		y++;
-	}
+	recurse_sierpinski(env, C_FR(env)->x, C_FR(env)->y, WINDOW_W, WINDOW_H, C_FR(env)->it);
 }
 
 void	print_sierpinski(t_mle *env)

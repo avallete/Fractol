@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 10:37:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 15:01:00 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 17:48:55 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ long double	it_newton(t_nc z, t_nc c, t_mle *env)
 		if (d == 0.0)
 			d = 0.000001;
 		z.r = (2.0/3.0)*z.r + (zzr - zzi)/d;
-		z.i = (2.0/3.0)*z.i + 2.0*tmp*z.i/d;
+		z.i = (2.0/3.0)*z.i - 2.0*tmp*z.i/d;
 		cm++;
 	}
 	if (z.r > 0.0)
-		RGB(C_FR(env)->rgb, 255, 0, 0, 255);
+				RGB(C_FR(env)->rgb, 230, 126, 34, 255);
 	else if (z.r <= 0.3 && z.i > 0.0)
-		RGB(C_FR(env)->rgb, 0, 0, 255, 255);
+		RGB(C_FR(env)->rgb, 192, 57, 43, 255);
 	else
-		RGB(C_FR(env)->rgb, 0, 255, 0, 255);
+		RGB(C_FR(env)->rgb, 241, 196 , 15, 255);
 	return (cm);
 }
 
