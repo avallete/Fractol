@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/31 10:43:40 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 09:50:19 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	init_simg(t_img *simg)
 
 void	init_xymandel(t_fra *fra)
 {
-	fra->x1 = -2.1;
-	fra->x2 = 0.6;
-	fra->y1 = -1.2;
-	fra->y2 = 1.2;
+	fra->x1 = -2.0;
+	fra->x2 = 2.0;
+	fra->y1 = -2.0;
+	fra->y2 = 2.0;
 	fra->it = 5;
 	fra->x = 0;
 	fra->y = 0;

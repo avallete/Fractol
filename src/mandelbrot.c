@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/30 19:48:53 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 09:09:21 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	create_mandelbrot(t_mle *env)
 		{
 			c.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			c.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			z.r = 0;
+			z.r = 0 + C_IF(env)->cr;
 			z.i = 0;
 			cm = it_mandel(z, c, env);
 			if (cm == C_FR(env)->it)

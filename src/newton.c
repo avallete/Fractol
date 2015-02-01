@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 10:37:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/31 17:58:05 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 09:54:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 long double		module_nc(t_nc nb)
 {
-	long double module;
 	long double	x;
 
 	x = (nb.r * nb.r) + (nb.i * nb.i);
-	module = sqrt(x);
-	return (module);
+	return (x);
 }
 
 long double		argument_nc(t_nc nb)
@@ -57,11 +55,11 @@ unsigned int	it_newton(t_nc z, t_nc c, t_mle *env)
 
 	cm = 0;
 	tmp = 0;
-	while (((z.r*z.r + z.i*z.i)< 10) && (cm < C_FR(env)->it))
+	while ((module_nc(z)) < 8 && (cm < C_FR(env)->it))
 	{
-		tmp = z.r;
-		z.r = (z.r*z.r - z.i*z.i) - c.r;
-		z.i = 2*abs(tmp*z.i) - c.i;
+		tmp = (z.r * z.r) - (z.i * z.i);
+		z.i = 2 * z.i * z.r + c.i;
+		z.r = tmp + c.r;
 		cm++;
 	}
 	return (cm);
@@ -76,17 +74,15 @@ void	create_newton(t_mle *env)
 	unsigned int cm;
 
 	y = C_FR(env)->y;
-	C_FR(env)->x1 = 1.755;
-	C_FR(env)->y1 = 0.03;
 	while (y < WINDOW_H)
 	{
 		x = C_FR(env)->x;
 		while (x < WINDOW_W)
 		{
-			c.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
-			c.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			z.r = 0;
-			z.i = 0;
+			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
+			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
+			c.r = -0.122565;
+			c.i = -0.744864;
 			cm = it_newton(z, c, env);
 			if (cm == C_FR(env)->it)
 				RGB(C_FR(env)->rgb, 5, 5, 5);
