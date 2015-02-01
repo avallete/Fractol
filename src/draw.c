@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/25 13:28:21 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/28 10:33:12 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 13:33:17 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_to_img(t_mle *env, unsigned int place, int *rgb)
 			C_IA(env)[place] = rgb[2];
 			C_IA(env)[place + 1] = rgb[1];
 			C_IA(env)[place + 2] = rgb[0];
-			C_IA(env)[place + 3] = 255;
+			C_IA(env)[place + 3] = rgb[3];
 		}
 	}
 }

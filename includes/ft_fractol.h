@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/31 16:33:37 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 14:37:01 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 # define WINDOW_H 500
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)
 # define PLACE_IMG(x, y) ((y * (WINDOW_W * 4)) + x * 4)
-# define RGB(c, r, g, b) (c[0] = r, c[1] = g, c[2] = b)
+# define RGB(c, r, g, b, a) (c[0] = r, c[1] = g, c[2] = b, c[3] = a)
 # define CENTERX (WINDOW_W / 2)
 # define CENTERY (WINDOW_H / 2)
 # define MOD(z)	(((z->r * z->r) + (z->i * z->i)))
-# define MANDELBROT_X1 -2.1
-# define MANDELBROT_X2 0.6
-# define MANDELBROT_Y1 -1.2
-# define MANDELBROT_Y2 1.2
+# define MANDELBROT_X1 -2.0
+# define MANDELBROT_X2 2.0
+# define MANDELBROT_Y1 -2.0
+# define MANDELBROT_Y2 2.0
 # define ZOOM_X(x1, x2) ((WINDOW_W / (x2 - x1)))
 # define ZOOM_Y(y1, y2) ((WINDOW_H / (y2 - y1)))
 # define C_IM(x)	((t_draw*)x->content)->simg->img
@@ -186,6 +186,7 @@ void	create_julia(t_mle *env);
 /*
 ** Sierpinski
 */
+unsigned int	it_sierpinski(int x, int y, t_mle *env);
 void	print_sierpinski(t_mle *env);
 void	create_sierpinski(t_mle *env);
 
@@ -194,7 +195,14 @@ void	create_sierpinski(t_mle *env);
 */
 void	print_newton(t_mle *env);
 void	create_newton(t_mle *env);
-unsigned int it_newton(t_nc z, t_nc c, t_mle *env);
+long double it_newton(t_nc z, t_nc c, t_mle *env);
+
+/*
+** Lapin
+*/
+void	print_lapin(t_mle *env);
+void	create_lapin(t_mle *env);
+unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** ----------
@@ -203,4 +211,19 @@ unsigned int it_newton(t_nc z, t_nc c, t_mle *env);
 */
 
 void	draw_to_img(t_mle *env, unsigned int place, int *rgb);
+
+
+
+/*
+** ----------
+** Operation in complexes numbers
+** ----------
+*/
+
+long double		module_nc(t_nc nb);
+long double		argument_nc(t_nc nb);
+long double		result_nc(t_nc nb);
+long double		add_nc(t_nc nb1, t_nc nb2);
+long double		sous_nc(t_nc nb1, t_nc nb2);
+long double		mul_nc(t_nc nb1, t_nc nb2);
 #endif

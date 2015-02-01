@@ -6,62 +6,44 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 10:37:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 09:54:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 15:01:00 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-long double		module_nc(t_nc nb)
+long double		cube(t_nc z)
 {
-	long double	x;
-
-	x = (nb.r * nb.r) + (nb.i * nb.i);
-	return (x);
+	return (((z.r + z.i) * (z.r + z.i) * (z.r + z.i)) - 1.0);
 }
 
-long double		argument_nc(t_nc nb)
-{
-	long double arccos;
-
-	arccos = acos(nb.r / (module_nc(nb)));
-	return (arccos);
-}
-
-long double		result_nc(t_nc nb)
-{
-	return (nb.r + nb.i);
-}
-
-long double		add_nc(t_nc nb1, t_nc nb2)
-{
-	return ((nb1.r + nb1.i) + (nb2.r + nb2.i));
-}
-
-long double		sous_nc(t_nc nb1, t_nc nb2)
-{
-	return ((nb1.r - nb1.i) + (nb2.r - nb2.i));
-}
-
-long double		mul_nc(t_nc nb1, t_nc nb2)
-{
-	return ((nb1.r + nb1.i)*(nb2.r + nb2.i));
-}
-
-unsigned int	it_newton(t_nc z, t_nc c, t_mle *env)
+long double	it_newton(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int cm;
 	long double	tmp;
+	long double zzr;
+	long double	zzi;
+	long double	d;
 
 	cm = 0;
-	tmp = 0;
-	while ((module_nc(z)) < 8 && (cm < C_FR(env)->it))
+	while (cm < C_FR(env)->it)
 	{
-		tmp = (z.r * z.r) - (z.i * z.i);
-		z.i = 2 * z.i * z.r + c.i;
-		z.r = tmp + c.r;
+		tmp = z.r;
+		zzr = z.r*z.r;
+		zzi = z.i*z.i;
+		d = 3.0*((zzr - zzi)*(zzr - zzi) + 4.0*(zzr*zzi));
+		if (d == 0.0)
+			d = 0.000001;
+		z.r = (2.0/3.0)*z.r + (zzr - zzi)/d;
+		z.i = (2.0/3.0)*z.i + 2.0*tmp*z.i/d;
 		cm++;
 	}
+	if (z.r > 0.0)
+		RGB(C_FR(env)->rgb, 255, 0, 0, 255);
+	else if (z.r <= 0.3 && z.i > 0.0)
+		RGB(C_FR(env)->rgb, 0, 0, 255, 255);
+	else
+		RGB(C_FR(env)->rgb, 0, 255, 0, 255);
 	return (cm);
 }
 
@@ -81,15 +63,9 @@ void	create_newton(t_mle *env)
 		{
 			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			c.r = -0.122565;
-			c.i = -0.744864;
+			c.r = 0;
+			c.i = 0;
 			cm = it_newton(z, c, env);
-			if (cm == C_FR(env)->it)
-				RGB(C_FR(env)->rgb, 5, 5, 5);
-			else if (C_CO(env))
-				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*C_IF(env)->cr, cm*255/C_FR(env)->it*C_CO(env), cm*255/C_CO(env)*C_IF(env)->ci);
-			else
-				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it))*C_IF(env)->cr, 0*C_IF(env)->ci);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}

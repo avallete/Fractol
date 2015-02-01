@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 09:09:21 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 13:34:47 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	create_mandelbrot(t_mle *env)
 			z.i = 0;
 			cm = it_mandel(z, c, env);
 			if (cm == C_FR(env)->it)
-				RGB(C_FR(env)->rgb, 5, 5, 5);
+				RGB(C_FR(env)->rgb, 5, 5, 5, 255);
 			else if (C_CO(env))
-				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*4, cm*255/C_FR(env)->it*C_CO(env)*2, cm*255/C_FR(env)->it*C_CO(env)*3);
+				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*C_IF(env)->cr, cm*255/C_FR(env)->it*C_CO(env), cm*255/C_CO(env)*C_IF(env)->ci, cm*255/C_FR(env)->it);
 			else
-				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it)), 0);
+				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it)), 0, 255);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}

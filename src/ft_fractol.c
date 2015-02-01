@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/31 18:31:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/01 13:32:42 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 		t_draw	sdraw;
 		t_inf	inf;
 		t_fra	fra;
-		int		rgb[3];
+		int		rgb[4];
 		int		tab[5];
 
 		tab[0] = WINDOW_W;
