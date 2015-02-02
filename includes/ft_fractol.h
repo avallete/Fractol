@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 13:45:51 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:51:04 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
-# define WINDOW_W 500
-# define WINDOW_H 500
+# define WINDOW_W 250
+# define WINDOW_H 250
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)
 # define PLACE_IMG(x, y) ((y * (WINDOW_W * 4)) + x * 4)
 # define RGB(c, r, g, b, a) (c[0] = r, c[1] = g, c[2] = b, c[3] = a)
@@ -213,8 +213,18 @@ void	print_lapin(t_mle *env);
 void	create_lapin(t_mle *env);
 unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env);
 
+/*
+** Burning Ship
+*/
 void	print_burningship(t_mle *env);
 void	create_burningship(t_mle *env);
+
+/*
+** Fibonacci
+*/
+long double		get_fibonacci(unsigned int it);
+void			print_fibonacci(t_mle *env);
+
 /*
 ** ----------
 ** Draw 
@@ -222,8 +232,9 @@ void	create_burningship(t_mle *env);
 */
 
 void	draw_to_img(t_mle *env, unsigned int place, int *rgb);
-
-
+void	draw_dx(t_nc *start, int *dir, t_mle *env);
+void	draw_dy(t_nc *start, int *dir, t_mle *env);
+void	connect_pts(t_mle *env, t_nc start, t_nc end);
 
 /*
 ** ----------

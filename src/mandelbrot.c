@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 13:46:07 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:50:43 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	create_mandelbrot(t_mle *env)
 			c.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			c.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
 			z.r = 0 + C_IF(env)->cr;
-			z.i = 0;
+			z.i = 0 + C_IF(env)->ci;
 			cm = it_mandel(z, c, env);
 			init_colors(env, cm);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
@@ -60,6 +60,7 @@ void	print_mandelbrot(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{
+		printf("it : %d\n", C_FR(env)->it);
 		create_mandelbrot(env);
 		mlx_put_image_to_window(env->mlx, env->win, C_IM(env), 0, 0);
 	}
