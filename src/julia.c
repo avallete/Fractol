@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:38:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 19:12:05 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/02 13:21:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,8 @@ void	create_julia(t_mle *env)
 			c.r = C_IF(env)->cr;
 			c.i = C_IF(env)->ci;
 			cm = it_mandel(z, c, env);
-			if (cm == C_FR(env)->it)
-				RGB(C_FR(env)->rgb, 0, 0, 0, 255);
-			else if (C_CO(env))
-				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*C_IF(env)->cr, cm*255/C_FR(env)->it*C_CO(env), cm*255/C_CO(env)*C_IF(env)->ci, cm*255/C_FR(env)->it);
-			else
-				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it)), 0, 255);
-				draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
+			init_colors(env, cm);
+			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}
 		y++;

@@ -1,56 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newton.c                                           :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/31 10:37:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 10:16:10 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/02 11:34:52 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/02 13:46:09 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-long double		cube(t_nc z)
-{
-	return (((z.r + z.i) * (z.r + z.i) * (z.r + z.i)) - 1.0);
-}
-
-void	it_newton(t_nc z, t_mle *env)
+unsigned int	it_burningship(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int cm;
-	long double	tmp;
-	long double zzr;
-	long double	zzi;
-	long double	d;
 
 	cm = 0;
-	while (cm < C_FR(env)->it)
+	t_nc tmp;
+	while (cm < C_FR(env)->it && (z.r*z.r + z.i*z.i) < 10)
 	{
-		tmp = z.r;
-		zzr = z.r*z.r;
-		zzi = z.i*z.i;
-		d = 3.0*((zzr - zzi)*(zzr - zzi) + 4.0*(zzr*zzi));
-		if (d == 0.0)
-			d = 0.000001;
-		z.r = (2.0/3.0)*z.r + (zzr - zzi)/d;
-		z.i = (2.0/3.0)*z.i - 2.0*tmp*z.i/d;
+		tmp.r = (z.r * z.r) - (z.i * z.i) - c.r;
+		tmp.i = 2 * fabs(z.r * z.i) - c.i;
+		z.r = tmp.r;
+		z.i = tmp.i;
 		cm++;
 	}
-	if (z.r > 0.0)
-		RGB(C_FR(env)->rgb, 230, 126, 34+C_CO(env), 255);
-	else if (z.r <= 0.3 && z.i > 0.0)
-		RGB(C_FR(env)->rgb, 192, 57, 43+C_CO(env), 255);
-	else
-		RGB(C_FR(env)->rgb, 241, 196 , 15+C_CO(env), 255);
+	return (cm);
 }
 
-void	create_newton(t_mle *env)
+void	create_burningship(t_mle *env)
 {
 	int y;
 	int x;
+	t_nc c;
 	t_nc z;
+	unsigned int cm;
 
 	y = C_FR(env)->y;
 	while (y < WINDOW_H)
@@ -60,7 +45,10 @@ void	create_newton(t_mle *env)
 		{
 			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			it_newton(z, env);
+			c.r = 1.755 - C_IF(env)->cr;
+			c.i = 0.03 + C_IF(env)->ci;
+			cm = it_burningship(z, c, env);
+			init_colors(env, cm);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}
@@ -68,11 +56,11 @@ void	create_newton(t_mle *env)
 	}
 }
 
-void	print_newton(t_mle *env)
+void	print_burningship(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{
-		create_newton(env);
+		create_burningship(env);
 		mlx_put_image_to_window(env->mlx, env->win, C_IM(env), 0, 0);
 	}
 }

@@ -6,11 +6,30 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 19:12:04 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/02 13:31:15 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
+
+void	init_base_colors(t_mle *env)
+{
+	if (*C_IT(env) == 1)
+		CO_MAND(env);
+	if (*C_IT(env) == 2)
+		CO_JULI(env);
+	if (*C_IT(env) == 4)
+		CO_LAPI(env);
+	if (*C_IT(env) == 6)
+		CO_BURN(env);
+}
+
+void	init_colors(t_mle *env, unsigned int cm)
+{
+	init_base_colors(env);
+	if (cm != C_FR(env)->it)
+		CO_DEGR(env);
+}
 
 void	init_simg(t_img *simg)
 {
@@ -24,15 +43,29 @@ void	init_xymandel(t_fra *fra)
 	fra->x2 = 2.0;
 	fra->y1 = -2.0;
 	fra->y2 = 2.0;
-	fra->it = 5;
+	fra->it = 10;
+	fra->x = 0;
+	fra->y = 0;
+}
+
+
+void	init_xysierpinski(t_fra *fra)
+{
+	fra->x1 = 0;
+	fra->x2 = WINDOW_W;
+	fra->y1 = 0;
+	fra->y2 = WINDOW_H;
+	fra->it = 2;
 	fra->x = 0;
 	fra->y = 0;
 }
 
 void	init_fra(t_fra *fra, int type)
 {
-	if (type == 1 || type == 2 || type == 3 || type == 4)
+	if (type == 1 || type == 2 || type == 3 || type == 4 || type == 6)
 		init_xymandel(fra);
+	else if (type == 5)
+		init_xysierpinski(fra);
 }
 
 void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb)

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 14:37:01 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/02 13:45:51 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@
 # define MANDELBROT_Y2 2.0
 # define ZOOM_X(x1, x2) ((WINDOW_W / (x2 - x1)))
 # define ZOOM_Y(y1, y2) ((WINDOW_H / (y2 - y1)))
+# define CO_BURN(x)	RGB(C_FR(x)->rgb, 41 + C_CO(x), 128, 185, 255)
+# define CO_MAND(x)	RGB(C_FR(x)->rgb, 26 + C_CO(x), 188, 156, 255)
+# define CO_LAPI(x)	RGB(C_FR(x)->rgb, 231 - C_CO(x), 76, 60, 255)
+# define CO_JULI(x)	RGB(C_FR(x)->rgb, 142, 68, 173 - C_CO(x), 255)
+# define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
+(((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
+255)
 # define C_IM(x)	((t_draw*)x->content)->simg->img
 # define C_IA(x)	((t_draw*)x->content)->simg->imgdata
 # define C_IL(x)	((t_draw*)x->content)->inf->line
@@ -131,6 +138,8 @@ void	init_simg(t_img *simg);
 void	init_xymandel(t_fra *fra);
 void	init_fra(t_fra *fra, int type);
 void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb);
+void	init_colors(t_mle *env, unsigned int cm);
+void	init_base_colors(t_mle *env);
 
 /*
 ** ----------
@@ -195,7 +204,7 @@ void	create_sierpinski(t_mle *env);
 */
 void	print_newton(t_mle *env);
 void	create_newton(t_mle *env);
-long double it_newton(t_nc z, t_nc c, t_mle *env);
+void	it_newton(t_nc z, t_mle *env);
 
 /*
 ** Lapin
@@ -204,6 +213,8 @@ void	print_lapin(t_mle *env);
 void	create_lapin(t_mle *env);
 unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env);
 
+void	print_burningship(t_mle *env);
+void	create_burningship(t_mle *env);
 /*
 ** ----------
 ** Draw 
