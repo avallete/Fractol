@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 15:19:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/31 10:02:11 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 14:48:45 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 int		mouse_hook(int button, int x, int y, t_mle *env)
 {
-	ft_putendl("Mouse button:");
-	ft_putnbr(button);
-	ft_putchar('\n');
-	ft_putnbr(x);
-	ft_putchar(':');
-	ft_putnbr(y);
-	ft_putchar('\n');
 	if (button == 4)
 		controled_zoom(env, x, y, 1);
 	if (button == 5)
@@ -30,9 +23,7 @@ int		mouse_hook(int button, int x, int y, t_mle *env)
 }
 int		key_hook(int keycode, t_mle *env)
 {
-	ft_putendl("keyboard button:");
-	ft_putnbr(keycode);
-	ft_putchar('\n');
+
 	if (keycode == ECHAP)
 		key_echap(env);
 	if (keycode == UP)

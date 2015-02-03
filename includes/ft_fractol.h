@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:59:41 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:27:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define ZOOM_Y(y1, y2) ((WINDOW_H / (y2 - y1)))
 # define CO_BURN(x)	RGB(C_FR(x)->rgb, 41 + C_CO(x), 128, 185, 255)
 # define CO_MAND(x)	RGB(C_FR(x)->rgb, 26 + C_CO(x), 188, 156, 255)
-# define CO_LAPI(x)	RGB(C_FR(x)->rgb, 231 - C_CO(x), 76, 60, 255)
+# define CO_LAPI(x)	RGB(C_FR(x)->rgb, 102, 204 - C_CO(x), 153, 255)
 # define CO_JULI(x)	RGB(C_FR(x)->rgb, 142, 68, 173 - C_CO(x), 255)
 # define CO_CROI(x)	RGB(C_FR(x)->rgb, 228, 241, 254 - C_CO(x), 255)
 # define CO_FUZZ(x)	RGB(C_FR(x)->rgb, 248 - C_CO(x), 148, 78, 255)
@@ -144,6 +144,7 @@ void	init_fra(t_fra *fra, int type);
 void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb);
 void	init_colors(t_mle *env, unsigned int cm);
 void	init_base_colors(t_mle *env);
+void	init_ci(t_inf *inf, int type);
 
 /*
 ** ----------
@@ -195,13 +196,6 @@ unsigned int	it_mandel(t_nc z, t_nc c, t_mle *env);
 */
 void	print_julia(t_mle *env);
 void	create_julia(t_mle *env);
-
-/*
-** Sierpinski
-*/
-unsigned int	it_sierpinski(int x, int y, t_mle *env);
-void	print_sierpinski(t_mle *env);
-void	create_sierpinski(t_mle *env);
 
 /*
 ** Newton

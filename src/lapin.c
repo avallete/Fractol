@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 10:00:43 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/01 13:40:14 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:22:56 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,7 @@ void	create_lapin(t_mle *env)
 			c.r = -0.122565;
 			c.i = -0.744864;
 			cm = it_lapin(z, c, env);
-			if (cm == C_FR(env)->it)
-				RGB(C_FR(env)->rgb, 5, 5, 5, 255);
-			else if (C_CO(env))
-				RGB(C_FR(env)->rgb, cm*255/C_FR(env)->it*C_CO(env)*C_IF(env)->cr, cm*255/C_FR(env)->it*C_CO(env), cm*255/C_CO(env)*C_IF(env)->ci, 255);
-			else
-				RGB(C_FR(env)->rgb, 0, ((cm*255/C_FR(env)->it))*C_IF(env)->cr, 0*C_IF(env)->ci, 255);
+			init_colors(env, cm);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 18:50:43 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 14:55:46 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	print_mandelbrot(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{
-		printf("it : %d\n", C_FR(env)->it);
 		create_mandelbrot(env);
 		mlx_put_image_to_window(env->mlx, env->win, C_IM(env), 0, 0);
 	}

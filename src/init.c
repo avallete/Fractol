@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:57:20 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:27:50 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_base_colors(t_mle *env)
 		CO_MAND(env);
 	if (*C_IT(env) == 2)
 		CO_JULI(env);
-	if (*C_IT(env) == 4)
+	if (*C_IT(env) == 3)
 		CO_LAPI(env);
 	if (*C_IT(env) == 6)
 		CO_BURN(env);
@@ -70,10 +70,22 @@ void	init_xysierpinski(t_fra *fra)
 
 void	init_fra(t_fra *fra, int type)
 {
-	if (type != 5)
+	if (type)
 		init_xymandel(fra);
-	else if (type == 5)
-		init_xysierpinski(fra);
+}
+
+void	init_ci(t_inf *inf, int type)
+{
+	if (type == 2)
+	{
+		inf->cr	= 0.285;
+		inf->ci = 0.01;
+	}
+	else
+	{
+		inf->cr	= 0.0;
+		inf->ci = 0.0;
+	}
 }
 
 void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb)
@@ -86,7 +98,5 @@ void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb)
 	inf->fra = sfra;
 	inf->fra->rgb = rgb;
 	inf->col1 = 0;
-	inf->cr	= 0.285;
-	inf->ci = 0.01;
 }
 

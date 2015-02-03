@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:58:03 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:27:51 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	check_name(char *name, int *i)
 		*i = 3;
 	else if (!(ft_strcmp("Newton", name)))
 		*i = 4;
-	else if (!(ft_strcmp("Sierpinski", name)))
-		*i = 5;
+	else if (!(ft_strcmp("Nova", name)))
+		*i = 10;
 	else if (!(ft_strcmp("Burning Ship", name)))
 		*i = 6;
 	else if (!(ft_strcmp("Croix", name)))
@@ -32,8 +32,6 @@ void	check_name(char *name, int *i)
 		*i = 8;
 	else if (!(ft_strcmp("Tetration", name)))
 		*i = 9;
-	else if (!(ft_strcmp("Nova", name)))
-		*i = 10;
 	else
 		*i = 0;
 }
@@ -48,8 +46,6 @@ void	print_fract(t_mle *env)
 		print_lapin(env);
 	else if (*C_IT(env) == 4)
 		print_newton(env);
-	else if (*C_IT(env) == 5)
-		print_sierpinski(env);
 	else if (*C_IT(env) == 6)
 		print_burningship(env);
 	else if (*C_IT(env) == 7)

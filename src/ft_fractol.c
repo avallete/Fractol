@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 14:33:47 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:22:17 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_putsterr(char *str)
 void	print_usage(void)
 {
 	ft_putsterr("Usage: ./Fractol [fractal name]\n");
-	ft_putsterr("Corrects names : Mandelbrot, Julia\n");
+	ft_putsterr("Corrects names : Mandelbrot, Julia, Newton, Burning Ship\
+, Croix, Fuzzy, Tetration, Nova, Lapin\n");
 }
 
 int		ft_fractol(t_mle *env, char *name)
@@ -33,6 +34,7 @@ int		ft_fractol(t_mle *env, char *name)
 	}
 	else
 	{
+		init_ci(C_IF(env), *C_IT(env));
 		init_fra(C_FR(env), *C_IT(env));
 		C_IM(env) ? mlx_destroy_image(env->mlx, C_IM(env)), (C_IM(env) = NULL) : \
 		(C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
