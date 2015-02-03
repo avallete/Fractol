@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 15:38:53 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 13:26:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	check_name(char *name, int *i)
 		*i = 5;
 	else if (!(ft_strcmp("Burning Ship", name)))
 		*i = 6;
-	else if (!(ft_strcmp("Fibonacci", name)))
+	else if (!(ft_strcmp("Croix", name)))
 		*i = 7;
+	else if (!(ft_strcmp("Fuzzy", name)))
+		*i = 8;
 	else
 		*i = 0;
 }
@@ -47,5 +49,7 @@ void	print_fract(t_mle *env)
 	else if (*C_IT(env) == 6)
 		print_burningship(env);
 	else if (*C_IT(env) == 7)
-		print_fibonacci(env);
+		print_croix(env);
+	else if (*C_IT(env) == 8)
+		print_fuzzy(env);
 }

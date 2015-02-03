@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 18:51:04 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 13:26:35 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
-# define WINDOW_W 250
-# define WINDOW_H 250
+# define WINDOW_W 500
+# define WINDOW_H 500
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)
 # define PLACE_IMG(x, y) ((y * (WINDOW_W * 4)) + x * 4)
 # define RGB(c, r, g, b, a) (c[0] = r, c[1] = g, c[2] = b, c[3] = a)
@@ -38,6 +38,8 @@
 # define CO_MAND(x)	RGB(C_FR(x)->rgb, 26 + C_CO(x), 188, 156, 255)
 # define CO_LAPI(x)	RGB(C_FR(x)->rgb, 231 - C_CO(x), 76, 60, 255)
 # define CO_JULI(x)	RGB(C_FR(x)->rgb, 142, 68, 173 - C_CO(x), 255)
+# define CO_CROI(x)	RGB(C_FR(x)->rgb, 228, 241, 254 - C_CO(x), 255)
+# define CO_FUZZ(x)	RGB(C_FR(x)->rgb, 248 - C_CO(x), 148, 78, 255)
 # define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
 (((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
 255)
@@ -220,11 +222,19 @@ void	print_burningship(t_mle *env);
 void	create_burningship(t_mle *env);
 
 /*
-** Fibonacci
+** Croix
 */
-long double		get_fibonacci(unsigned int it);
-void			print_fibonacci(t_mle *env);
+void	print_croix(t_mle *env);
+void	create_croix(t_mle *env);
+unsigned int	it_croix(t_nc z, t_nc c, t_mle *env);
 
+/*
+** Fuzzy
+*/
+
+unsigned int	it_fuzzy(t_nc z, t_mle *env);
+void	create_fuzzy(t_mle *env);
+void	print_fuzzy(t_mle *env);
 /*
 ** ----------
 ** Draw 
