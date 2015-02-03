@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 12:50:06 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 14:33:47 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		ft_fractol(t_mle *env, char *name)
 	if (C_IM(env) && \
 			((C_IA(env) = mlx_get_data_addr(C_IM(env), C_IP(env), C_IL(env), C_IC(env)))))
 		mlx_expose_hook(env->win, expose_hook, env);
-		mlx_key_hook(env->win, key_hook, env);
 		mlx_mouse_hook(env->win, mouse_hook, env);
 		mlx_hook(env->win, MotionNotify, Button3MotionMask, modify_xy_fract, env);
+		mlx_hook(env->win, KeyPress, KeyRelease, key_hook, env);
 		mlx_loop(env->mlx);
 	}
 	return (0);

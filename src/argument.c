@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:26:37 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 13:58:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	check_name(char *name, int *i)
 		*i = 7;
 	else if (!(ft_strcmp("Fuzzy", name)))
 		*i = 8;
+	else if (!(ft_strcmp("Tetration", name)))
+		*i = 9;
+	else if (!(ft_strcmp("Nova", name)))
+		*i = 10;
 	else
 		*i = 0;
 }
@@ -52,4 +56,8 @@ void	print_fract(t_mle *env)
 		print_croix(env);
 	else if (*C_IT(env) == 8)
 		print_fuzzy(env);
+	else if (*C_IT(env) == 9)
+		print_tetration(env);
+	else if (*C_IT(env) == 10)
+		print_nova(env);
 }

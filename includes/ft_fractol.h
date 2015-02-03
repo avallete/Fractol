@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:26:35 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 13:59:41 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
+# include <limits.h>
 # include <stdio.h>
 # define WINDOW_W 500
 # define WINDOW_H 500
@@ -40,6 +41,7 @@
 # define CO_JULI(x)	RGB(C_FR(x)->rgb, 142, 68, 173 - C_CO(x), 255)
 # define CO_CROI(x)	RGB(C_FR(x)->rgb, 228, 241, 254 - C_CO(x), 255)
 # define CO_FUZZ(x)	RGB(C_FR(x)->rgb, 248 - C_CO(x), 148, 78, 255)
+# define CO_TETR(x)	RGB(C_FR(x)->rgb, 65, 131, 215 - C_CO(x), 255)
 # define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
 (((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
 255)
@@ -231,10 +233,24 @@ unsigned int	it_croix(t_nc z, t_nc c, t_mle *env);
 /*
 ** Fuzzy
 */
-
 unsigned int	it_fuzzy(t_nc z, t_mle *env);
 void	create_fuzzy(t_mle *env);
 void	print_fuzzy(t_mle *env);
+
+/*
+** Tetration
+*/
+
+unsigned int	it_tetration(t_nc z, t_mle *env);
+void	create_tetration(t_mle *env);
+void	print_tetration(t_mle *env);
+
+
+/*
+** Nova
+*/
+void	print_nova(t_mle *env);
+
 /*
 ** ----------
 ** Draw 

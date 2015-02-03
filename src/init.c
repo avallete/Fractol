@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:26:36 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 13:57:20 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	init_base_colors(t_mle *env)
 		CO_CROI(env);
 	if (*C_IT(env) == 8)
 		CO_FUZZ(env);
+	if (*C_IT(env) == 9)
+		CO_TETR(env);
+	if (*C_IT(env) == 10)
+		CO_TETR(env);
 }
 
 void	init_colors(t_mle *env, unsigned int cm)
@@ -66,7 +70,7 @@ void	init_xysierpinski(t_fra *fra)
 
 void	init_fra(t_fra *fra, int type)
 {
-	if (type == 1 || type == 2 || type == 3 || type == 4 || type == 6 || type == 7 || type == 8)
+	if (type != 5)
 		init_xymandel(fra);
 	else if (type == 5)
 		init_xysierpinski(fra);
