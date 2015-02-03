@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 15:27:52 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 17:25:42 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 # define K_C		99
 # define K_X		120
 # define K_P		112
+# define K_R		114
 
 typedef struct		s_mle
 {
@@ -167,6 +168,7 @@ void	zoom(t_mle *env, int mode);
 int		modify_prec(t_mle *env, int mode);
 void	key_move(t_mle *env, int type, float mode);
 void	modify_color(t_mle *env, int mode);
+void	key_reset(t_mle *env);
 
 /*
 ** ----------

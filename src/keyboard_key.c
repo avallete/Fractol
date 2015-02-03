@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:17:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 15:07:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/03 17:29:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int		modify_prec(t_mle *env, int mode)
 {
 	C_FR(env)->it += mode;
 	return (0);
+}
+
+void	key_reset(t_mle *env)
+{
+	init_ci(C_IF(env), *C_IT(env));
+	init_fra(C_FR(env), *C_IT(env));
 }
 
 void	key_echap(t_mle *env)
