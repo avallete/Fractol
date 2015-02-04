@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 16:15:04 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/04 18:46:01 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	check_name(char *name, int *i)
 		*i = 9;
 	else if (!(ft_strcmp("Moire", name)))
 		*i = 11;
-	else if (!(ft_strcmp("Nova", name)))
+	else if (!(ft_strcmp("JuliaBis", name)))
 		*i = 12;
+	else if (!(ft_strcmp("Soleil", name)))
+		*i = 13;
 	else
 		*i = 0;
 }
@@ -63,5 +65,7 @@ void	print_fract(t_mle *env)
 	else if (*C_IT(env) == 11)
 		print_moire(env);
 	else if (*C_IT(env) == 12)
-		print_nova(env);
+		print_juliabis(env);
+	else if (*C_IT(env) == 13)
+		print_soleil(env);
 }

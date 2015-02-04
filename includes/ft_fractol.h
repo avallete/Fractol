@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 16:19:37 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/04 18:45:51 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define CO_TETR(x)	RGB(C_FR(x)->rgb, 65, 131, 215 - C_CO(x), 255)
 # define CO_GLYN(x)	RGB(C_FR(x)->rgb, 46, 204 -  C_CO(x), 113, 255)
 # define CO_MOIR(x)	RGB(C_FR(x)->rgb, 230 -  C_CO(x), 126, 34, 255)
+# define CO_JUBI(x)	RGB(C_FR(x)->rgb, 52, 152, 219 - C_CO(x), 255)
+# define CO_SOLE(x)	RGB(C_FR(x)->rgb, 241 -  C_CO(x), 196, 15, 255)
 # define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
 (((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
 255)
@@ -257,11 +259,19 @@ void	print_moire(t_mle *env);
 void	create_moire(t_mle *env);
 unsigned int	it_moire(t_nc z, t_nc c, t_mle *env);
 
+/*
+** JuliaBis
+*/
+unsigned int	it_juliabis(t_nc z, t_nc c, t_mle *env);
+void	create_juliabis(t_mle *env);
+void	print_juliabis(t_mle *env);
 
 /*
-** Nova
+** Soleil
 */
-void	print_nova(t_mle *env);
+void	print_soleil(t_mle *env);
+void	create_soleil(t_mle *env);
+unsigned int	it_soleil(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** ----------
