@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:04:40 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 15:27:50 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/04 15:57:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	init_base_colors(t_mle *env)
 	if (*C_IT(env) == 9)
 		CO_TETR(env);
 	if (*C_IT(env) == 10)
-		CO_TETR(env);
+		CO_GLYN(env);
+	if (*C_IT(env) == 11)
+		CO_GLYN(env);
 }
 
 void	init_colors(t_mle *env, unsigned int cm)
