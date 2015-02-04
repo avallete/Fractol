@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 15:59:22 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/04 16:19:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@
 # define CO_CROI(x)	RGB(C_FR(x)->rgb, 228, 241, 254 - C_CO(x), 255)
 # define CO_FUZZ(x)	RGB(C_FR(x)->rgb, 248 - C_CO(x), 148, 78, 255)
 # define CO_TETR(x)	RGB(C_FR(x)->rgb, 65, 131, 215 - C_CO(x), 255)
-# define CO_GLYN(x)	RGB(C_FR(x)->rgb, 46, 204 - C_CO(x), 113, 255)
+# define CO_GLYN(x)	RGB(C_FR(x)->rgb, 46, 204 -  C_CO(x), 113, 255)
+# define CO_MOIR(x)	RGB(C_FR(x)->rgb, 230 -  C_CO(x), 126, 34, 255)
 # define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
 (((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
 255)
@@ -250,7 +251,15 @@ void	print_glynn(t_mle *env);
 
 
 /*
-** Random
+** Moire
+*/
+void	print_moire(t_mle *env);
+void	create_moire(t_mle *env);
+unsigned int	it_moire(t_nc z, t_nc c, t_mle *env);
+
+
+/*
+** Nova
 */
 void	print_nova(t_mle *env);
 

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 15:59:56 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/04 16:15:04 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	check_name(char *name, int *i)
 		*i = 8;
 	else if (!(ft_strcmp("Tetration", name)))
 		*i = 9;
-	else if (!(ft_strcmp("Nova", name)))
+	else if (!(ft_strcmp("Moire", name)))
 		*i = 11;
+	else if (!(ft_strcmp("Nova", name)))
+		*i = 12;
 	else
 		*i = 0;
 }
@@ -59,5 +61,7 @@ void	print_fract(t_mle *env)
 	else if (*C_IT(env) == 10)
 		print_glynn(env);
 	else if (*C_IT(env) == 11)
+		print_moire(env);
+	else if (*C_IT(env) == 12)
 		print_nova(env);
 }
