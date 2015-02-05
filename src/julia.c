@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:38:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 13:21:44 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:34:30 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	create_julia(t_mle *env)
 {
-	int y;
-	int x;
-	t_nc c;
-	t_nc z;
-	unsigned int cm;
+	int				y;
+	int				x;
+	t_nc			c;
+	t_nc			z;
+	unsigned int	cm;
 
 	y = C_FR(env)->y;
 	while (y < WINDOW_H)
@@ -28,8 +28,8 @@ void	create_julia(t_mle *env)
 		{
 			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			c.r = C_IF(env)->cr;
-			c.i = C_IF(env)->ci;
+			c.r = C_IF(env).cr;
+			c.i = C_IF(env).ci;
 			cm = it_mandel(z, c, env);
 			init_colors(env, cm);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 18:45:51 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:41:04 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@
 # define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
 (((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
 255)
-# define C_IM(x)	((t_draw*)x->content)->simg->img
-# define C_IA(x)	((t_draw*)x->content)->simg->imgdata
-# define C_IL(x)	((t_draw*)x->content)->inf->line
-# define C_IP(x)	((t_draw*)x->content)->inf->px
-# define C_IC(x)	((t_draw*)x->content)->inf->c
-# define C_IT(x)	((t_draw*)x->content)->inf->type
-# define C_FR(x)	((t_draw*)x->content)->inf->fra
-# define C_CO(x)	((t_draw*)x->content)->inf->col1
+# define C_IM(x)	((t_draw*)x->content)->simg.img
+# define C_IA(x)	((t_draw*)x->content)->simg.imgdata
+# define C_IL(x)	((t_draw*)x->content)->inf.line
+# define C_IP(x)	((t_draw*)x->content)->inf.px
+# define C_IC(x)	((t_draw*)x->content)->inf.c
+# define C_IT(x)	((t_draw*)x->content)->inf.type
+# define C_FR(x)	((t_draw*)x->content)->inf.fra
+# define C_CO(x)	((t_draw*)x->content)->inf.col1
 # define C_IF(x)	((t_draw*)x->content)->inf
 # define ECHAP		0xFF1B
 # define UP			0xFF52
@@ -69,6 +69,7 @@
 # define K_X		120
 # define K_P		112
 # define K_R		114
+# define CLK_R		Button3MotionMask
 
 typedef struct		s_mle
 {
@@ -124,8 +125,8 @@ typedef	struct		s_inf
 
 typedef	struct		s_draw
 {
-	t_img			*simg;
-	t_inf			*inf;
+	t_img			simg;
+	t_inf			inf;
 }					t_draw;
 
 /*
@@ -294,6 +295,5 @@ long double		module_nc(t_nc nb);
 long double		argument_nc(t_nc nb);
 long double		result_nc(t_nc nb);
 long double		add_nc(t_nc nb1, t_nc nb2);
-long double		sous_nc(t_nc nb1, t_nc nb2);
 long double		mul_nc(t_nc nb1, t_nc nb2);
 #endif

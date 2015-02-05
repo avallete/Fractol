@@ -6,18 +6,18 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 13:29:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 18:56:07 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:36:46 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_tetration(t_nc z, t_mle *env)
+unsigned int		it_tetration(t_nc z, t_mle *env)
 {
-	unsigned int cm;
+	unsigned int	cm;
+	t_nc			tmp;
 
 	cm = 0;
-	t_nc tmp;
 	while (cm < C_FR(env)->it && hypot(z.r, z.i) < LLONG_MAX)
 	{
 		tmp.r = exp(-0.5 * M_PI * z.i);
@@ -29,12 +29,12 @@ unsigned int	it_tetration(t_nc z, t_mle *env)
 	return (cm);
 }
 
-void	create_tetration(t_mle *env)
+void				create_tetration(t_mle *env)
 {
-	int y;
-	int x;
-	t_nc z;
-	unsigned int cm;
+	int				y;
+	int				x;
+	t_nc			z;
+	unsigned int	cm;
 
 	y = C_FR(env)->y;
 	while (y < WINDOW_H)
@@ -53,7 +53,7 @@ void	create_tetration(t_mle *env)
 	}
 }
 
-void	print_tetration(t_mle *env)
+void				print_tetration(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

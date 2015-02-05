@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   fuzzy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/03 12:07:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 13:12:30 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/05 11:25:03 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/05 11:25:45 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 unsigned int	it_fuzzy(t_nc z, t_mle *env)
 {
-	unsigned int cm;
-	t_nc tmp;
+	unsigned int	cm;
+	t_nc			tmp;
 
 	cm = 0;
 	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 1.1)
@@ -28,12 +28,12 @@ unsigned int	it_fuzzy(t_nc z, t_mle *env)
 	return (cm);
 }
 
-void	create_fuzzy(t_mle *env)
+void			create_fuzzy(t_mle *env)
 {
-	int y;
-	int x;
-	t_nc z;
-	unsigned int cm;
+	int				y;
+	int				x;
+	t_nc			z;
+	unsigned int	cm;
 
 	y = C_FR(env)->y;
 	while (y < WINDOW_H)
@@ -52,7 +52,7 @@ void	create_fuzzy(t_mle *env)
 	}
 }
 
-void	print_fuzzy(t_mle *env)
+void			print_fuzzy(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

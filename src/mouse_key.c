@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 11:04:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/02 11:33:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:38:14 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	controled_zoom(t_mle *env, int x, int y, int mode)
 	zoom(env, mode);
 }
 
-int	modify_xy_fract(int x, int y, t_mle *env)
+int		modify_xy_fract(int x, int y, t_mle *env)
 {
 	long double x1;
 	long double y1;
@@ -49,8 +49,8 @@ int	modify_xy_fract(int x, int y, t_mle *env)
 		x1 *= 10;
 	while (y1 < -1)
 		y1 *= 10;
-	C_IF(env)->cr = x1;
-	C_IF(env)->ci = y1;
+	C_IF(env).cr = x1;
+	C_IF(env).ci = y1;
 	expose_hook(env);
 	return (0);
 }

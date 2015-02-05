@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 10:00:43 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/03 15:22:56 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 11:39:53 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env)
 {
-	unsigned int cm;
-	long double	tmp;
+	unsigned int	cm;
+	long double		tmp;
 
 	cm = 0;
 	tmp = 0;
@@ -29,13 +29,13 @@ unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env)
 	return (cm);
 }
 
-void	create_lapin(t_mle *env)
+void			create_lapin(t_mle *env)
 {
-	int y;
-	int x;
-	t_nc c;
-	t_nc z;
-	unsigned int cm;
+	int				y;
+	int				x;
+	t_nc			c;
+	t_nc			z;
+	unsigned int	cm;
 
 	y = C_FR(env)->y;
 	while (y < WINDOW_H)
@@ -56,7 +56,7 @@ void	create_lapin(t_mle *env)
 	}
 }
 
-void	print_lapin(t_mle *env)
+void			print_lapin(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

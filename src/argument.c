@@ -6,11 +6,27 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/04 18:46:01 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:05:35 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
+
+void	check_namebis(char *name, int *i)
+{
+	if (!(ft_strcmp("Tetration", name)))
+		*i = 9;
+	else if (!(ft_strcmp("Glynn", name)))
+		*i = 10;
+	else if (!(ft_strcmp("Moire", name)))
+		*i = 11;
+	else if (!(ft_strcmp("JuliaBis", name)))
+		*i = 12;
+	else if (!(ft_strcmp("Soleil", name)))
+		*i = 13;
+	else
+		*i = 0;
+}
 
 void	check_name(char *name, int *i)
 {
@@ -22,24 +38,14 @@ void	check_name(char *name, int *i)
 		*i = 3;
 	else if (!(ft_strcmp("Newton", name)))
 		*i = 4;
-	else if (!(ft_strcmp("Glynn", name)))
-		*i = 10;
 	else if (!(ft_strcmp("Burning Ship", name)))
 		*i = 6;
 	else if (!(ft_strcmp("Croix", name)))
 		*i = 7;
 	else if (!(ft_strcmp("Fuzzy", name)))
 		*i = 8;
-	else if (!(ft_strcmp("Tetration", name)))
-		*i = 9;
-	else if (!(ft_strcmp("Moire", name)))
-		*i = 11;
-	else if (!(ft_strcmp("JuliaBis", name)))
-		*i = 12;
-	else if (!(ft_strcmp("Soleil", name)))
-		*i = 13;
 	else
-		*i = 0;
+		check_namebis(name, i);
 }
 
 void	print_fract(t_mle *env)
