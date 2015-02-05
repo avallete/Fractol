@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 13:29:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:36:46 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:45:24 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned int		it_tetration(t_nc z, t_mle *env)
 	t_nc			tmp;
 
 	cm = 0;
-	while (cm < C_FR(env)->it && hypot(z.r, z.i) < LLONG_MAX)
+	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 90000000000)
 	{
 		tmp.r = exp(-0.5 * M_PI * z.i);
 		tmp.i = M_PI * z.r / 2;

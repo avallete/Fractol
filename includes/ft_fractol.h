@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:41:04 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:57:02 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
-# include <limits.h>
-# include <stdio.h>
 # define WINDOW_W 500
 # define WINDOW_H 500
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)
@@ -46,9 +44,10 @@
 # define CO_MOIR(x)	RGB(C_FR(x)->rgb, 230 -  C_CO(x), 126, 34, 255)
 # define CO_JUBI(x)	RGB(C_FR(x)->rgb, 52, 152, 219 - C_CO(x), 255)
 # define CO_SOLE(x)	RGB(C_FR(x)->rgb, 241 -  C_CO(x), 196, 15, 255)
-# define CO_DEGR(x) RGB(C_FR(x)->rgb, (((cm*C_FR(x)->rgb[0])/C_FR(env)->it)), \
-(((cm*C_FR(x)->rgb[1])/C_FR(env)->it)), (((cm*C_FR(x)->rgb[3])/C_FR(env)->it)),\
-255)
+# define DEGRR(x)	(((cm*C_FR(x)->rgb[0])/C_FR(env)->it))
+# define DEGRG(x)	(((cm*C_FR(x)->rgb[1])/C_FR(env)->it))
+# define DEGRB(x)	(((cm*C_FR(x)->rgb[2])/C_FR(env)->it))
+# define CO_DEGR(x) RGB(C_FR(x)->rgb, DEGRR(x), DEGRG(x), DEGRB(x), 255)
 # define C_IM(x)	((t_draw*)x->content)->simg.img
 # define C_IA(x)	((t_draw*)x->content)->simg.imgdata
 # define C_IL(x)	((t_draw*)x->content)->inf.line
@@ -135,8 +134,8 @@ typedef	struct		s_draw
 ** ----------
 */
 
-void	check_name(char *name, int *i);
-void	print_fract(t_mle *env);
+void				check_name(char *name, int *i);
+void				print_fract(t_mle *env);
 
 /*
 ** ----------
@@ -144,13 +143,13 @@ void	print_fract(t_mle *env);
 ** ----------
 */
 
-void	init_simg(t_img *simg);
-void	init_xymandel(t_fra *fra);
-void	init_fra(t_fra *fra, int type);
-void	init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb);
-void	init_colors(t_mle *env, unsigned int cm);
-void	init_base_colors(t_mle *env);
-void	init_ci(t_inf *inf, int type);
+void				init_simg(t_img *simg);
+void				init_xymandel(t_fra *fra);
+void				init_fra(t_fra *fra, int type);
+void				init_inf(t_inf *inf, int *tab, t_fra *sfra, int *rgb);
+void				init_colors(t_mle *env, unsigned int cm);
+void				init_base_colors(t_mle *env);
+void				init_ci(t_inf *inf, int type);
 
 /*
 ** ----------
@@ -158,9 +157,9 @@ void	init_ci(t_inf *inf, int type);
 ** ----------
 */
 
-int		expose_hook(t_mle *env);
-int		key_hook(int keycode, t_mle *env);
-int		mouse_hook(int button, int x, int y, t_mle *env);
+int					expose_hook(t_mle *env);
+int					key_hook(int keycode, t_mle *env);
+int					mouse_hook(int button, int x, int y, t_mle *env);
 
 /*
 ** ----------
@@ -168,22 +167,21 @@ int		mouse_hook(int button, int x, int y, t_mle *env);
 ** ----------
 */
 
-void	key_echap(t_mle *env);
-void	zoom(t_mle *env, int mode);
-int		modify_prec(t_mle *env, int mode);
-void	key_move(t_mle *env, int type, float mode);
-void	modify_color(t_mle *env, int mode);
-void	key_reset(t_mle *env);
+void				key_echap(t_mle *env);
+void				zoom(t_mle *env, int mode);
+int					modify_prec(t_mle *env, int mode);
+void				key_move(t_mle *env, int type, float mode);
+void				modify_color(t_mle *env, int mode);
+void				key_reset(t_mle *env);
 
 /*
 ** ----------
 ** Mouse keys functions
 ** ----------
 */
-void	controled_zoom(t_mle *env, int x, int y, int mode);
-int		modify_xy_fract(int x, int y, t_mle *env);
-int		modify_col_fract(int x, int y, t_mle *env);
-
+void				controled_zoom(t_mle *env, int x, int y, int mode);
+int					modify_xy_fract(int x, int y, t_mle *env);
+int					modify_col_fract(int x, int y, t_mle *env);
 
 /*
 ** ----------
@@ -192,98 +190,96 @@ int		modify_col_fract(int x, int y, t_mle *env);
 */
 
 /*
-** Mandelbrot 
+** Mandelbrot
 */
-void	print_mandelbrot(t_mle *env);
-void	create_mandelbrot(t_mle *env);
-unsigned int	it_mandel(t_nc z, t_nc c, t_mle *env);
+void				print_mandelbrot(t_mle *env);
+void				create_mandelbrot(t_mle *env);
+unsigned int		it_mandel(t_nc z, t_nc c, t_mle *env);
 
 /*
-** Julia 
+** Julia
 */
-void	print_julia(t_mle *env);
-void	create_julia(t_mle *env);
+void				print_julia(t_mle *env);
+void				create_julia(t_mle *env);
 
 /*
 ** Newton
 */
-void	print_newton(t_mle *env);
-void	create_newton(t_mle *env);
-void	it_newton(t_nc z, t_mle *env);
+void				print_newton(t_mle *env);
+void				create_newton(t_mle *env);
+void				it_newton(t_nc z, t_mle *env);
 
 /*
 ** Lapin
 */
-void	print_lapin(t_mle *env);
-void	create_lapin(t_mle *env);
-unsigned int	it_lapin(t_nc z, t_nc c, t_mle *env);
+void				print_lapin(t_mle *env);
+void				create_lapin(t_mle *env);
+unsigned int		it_lapin(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** Burning Ship
 */
-void	print_burningship(t_mle *env);
-void	create_burningship(t_mle *env);
+void				print_burningship(t_mle *env);
+void				create_burningship(t_mle *env);
 
 /*
 ** Croix
 */
-void	print_croix(t_mle *env);
-void	create_croix(t_mle *env);
-unsigned int	it_croix(t_nc z, t_nc c, t_mle *env);
+void				print_croix(t_mle *env);
+void				create_croix(t_mle *env);
+unsigned int		it_croix(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** Fuzzy
 */
-unsigned int	it_fuzzy(t_nc z, t_mle *env);
-void	create_fuzzy(t_mle *env);
-void	print_fuzzy(t_mle *env);
+unsigned int		it_fuzzy(t_nc z, t_mle *env);
+void				create_fuzzy(t_mle *env);
+void				print_fuzzy(t_mle *env);
 
 /*
 ** Tetration
 */
 
-unsigned int	it_tetration(t_nc z, t_mle *env);
-void	create_tetration(t_mle *env);
-void	print_tetration(t_mle *env);
-
+unsigned int		it_tetration(t_nc z, t_mle *env);
+void				create_tetration(t_mle *env);
+void				print_tetration(t_mle *env);
 
 /*
 ** Glynn
 */
-void	print_glynn(t_mle *env);
-
+void				print_glynn(t_mle *env);
 
 /*
 ** Moire
 */
-void	print_moire(t_mle *env);
-void	create_moire(t_mle *env);
-unsigned int	it_moire(t_nc z, t_nc c, t_mle *env);
+void				print_moire(t_mle *env);
+void				create_moire(t_mle *env);
+unsigned int		it_moire(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** JuliaBis
 */
-unsigned int	it_juliabis(t_nc z, t_nc c, t_mle *env);
-void	create_juliabis(t_mle *env);
-void	print_juliabis(t_mle *env);
+unsigned int		it_juliabis(t_nc z, t_nc c, t_mle *env);
+void				create_juliabis(t_mle *env);
+void				print_juliabis(t_mle *env);
 
 /*
 ** Soleil
 */
-void	print_soleil(t_mle *env);
-void	create_soleil(t_mle *env);
-unsigned int	it_soleil(t_nc z, t_nc c, t_mle *env);
+void				print_soleil(t_mle *env);
+void				create_soleil(t_mle *env);
+unsigned int		it_soleil(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** ----------
-** Draw 
+** Draw
 ** ----------
 */
 
-void	draw_to_img(t_mle *env, unsigned int place, int *rgb);
-void	draw_dx(t_nc *start, int *dir, t_mle *env);
-void	draw_dy(t_nc *start, int *dir, t_mle *env);
-void	connect_pts(t_mle *env, t_nc start, t_nc end);
+void				draw_to_img(t_mle *env, unsigned int place, int *rgb);
+void				draw_dx(t_nc *start, int *dir, t_mle *env);
+void				draw_dy(t_nc *start, int *dir, t_mle *env);
+void				connect_pts(t_mle *env, t_nc start, t_nc end);
 
 /*
 ** ----------
@@ -291,9 +287,9 @@ void	connect_pts(t_mle *env, t_nc start, t_nc end);
 ** ----------
 */
 
-long double		module_nc(t_nc nb);
-long double		argument_nc(t_nc nb);
-long double		result_nc(t_nc nb);
-long double		add_nc(t_nc nb1, t_nc nb2);
-long double		mul_nc(t_nc nb1, t_nc nb2);
+long double			module_nc(t_nc nb);
+long double			argument_nc(t_nc nb);
+long double			result_nc(t_nc nb);
+long double			add_nc(t_nc nb1, t_nc nb2);
+long double			mul_nc(t_nc nb1, t_nc nb2);
 #endif
