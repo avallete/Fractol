@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 10:37:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:35:30 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:27:43 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-void	it_newton(t_nc z, t_mle *env)
+static void	it_newton(t_nc z, t_mle *env)
 {
 	unsigned int	cm;
 	long double		tmp;
@@ -41,7 +41,7 @@ void	it_newton(t_nc z, t_mle *env)
 		RGB(C_FR(env)->rgb, 241, 196, 15 + C_CO(env), 255);
 }
 
-void	create_newton(t_mle *env)
+static void	create_newton(t_mle *env)
 {
 	int		y;
 	int		x;
@@ -63,7 +63,7 @@ void	create_newton(t_mle *env)
 	}
 }
 
-void	print_newton(t_mle *env)
+void		print_newton(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

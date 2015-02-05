@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 11:29:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:34:41 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:34:13 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_juliabis(t_nc z, t_nc c, t_mle *env)
+static unsigned int	it_juliabis(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int	cm;
 	long double		tmp;
@@ -32,7 +32,7 @@ unsigned int	it_juliabis(t_nc z, t_nc c, t_mle *env)
 	return (cm + z.r - z.i);
 }
 
-void			create_juliabis(t_mle *env)
+static void			create_juliabis(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -59,7 +59,7 @@ void			create_juliabis(t_mle *env)
 	}
 }
 
-void			print_juliabis(t_mle *env)
+void				print_juliabis(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

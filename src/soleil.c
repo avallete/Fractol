@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 11:27:10 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:35:42 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:34:34 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_soleil(t_nc z, t_nc c, t_mle *env)
+static unsigned int	it_soleil(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int	cm;
 	long double		tmp;
@@ -32,7 +32,7 @@ unsigned int	it_soleil(t_nc z, t_nc c, t_mle *env)
 	return (cm);
 }
 
-void			create_soleil(t_mle *env)
+static void			create_soleil(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -59,7 +59,7 @@ void			create_soleil(t_mle *env)
 	}
 }
 
-void			print_soleil(t_mle *env)
+void				print_soleil(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

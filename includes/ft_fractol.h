@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:57:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:35:34 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef	struct		s_draw
 ** Arguments checking functions
 ** ----------
 */
-
 void				check_name(char *name, int *i);
 void				print_fract(t_mle *env);
 
@@ -193,55 +192,41 @@ int					modify_col_fract(int x, int y, t_mle *env);
 ** Mandelbrot
 */
 void				print_mandelbrot(t_mle *env);
-void				create_mandelbrot(t_mle *env);
 unsigned int		it_mandel(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** Julia
 */
 void				print_julia(t_mle *env);
-void				create_julia(t_mle *env);
 
 /*
 ** Newton
 */
 void				print_newton(t_mle *env);
-void				create_newton(t_mle *env);
-void				it_newton(t_nc z, t_mle *env);
 
 /*
 ** Lapin
 */
 void				print_lapin(t_mle *env);
-void				create_lapin(t_mle *env);
-unsigned int		it_lapin(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** Burning Ship
 */
 void				print_burningship(t_mle *env);
-void				create_burningship(t_mle *env);
 
 /*
 ** Croix
 */
 void				print_croix(t_mle *env);
-void				create_croix(t_mle *env);
-unsigned int		it_croix(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** Fuzzy
 */
-unsigned int		it_fuzzy(t_nc z, t_mle *env);
-void				create_fuzzy(t_mle *env);
 void				print_fuzzy(t_mle *env);
 
 /*
 ** Tetration
 */
-
-unsigned int		it_tetration(t_nc z, t_mle *env);
-void				create_tetration(t_mle *env);
 void				print_tetration(t_mle *env);
 
 /*
@@ -253,29 +238,22 @@ void				print_glynn(t_mle *env);
 ** Moire
 */
 void				print_moire(t_mle *env);
-void				create_moire(t_mle *env);
-unsigned int		it_moire(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** JuliaBis
 */
-unsigned int		it_juliabis(t_nc z, t_nc c, t_mle *env);
-void				create_juliabis(t_mle *env);
 void				print_juliabis(t_mle *env);
 
 /*
 ** Soleil
 */
 void				print_soleil(t_mle *env);
-void				create_soleil(t_mle *env);
-unsigned int		it_soleil(t_nc z, t_nc c, t_mle *env);
 
 /*
 ** ----------
 ** Draw
 ** ----------
 */
-
 void				draw_to_img(t_mle *env, unsigned int place, int *rgb);
 void				draw_dx(t_nc *start, int *dir, t_mle *env);
 void				draw_dy(t_nc *start, int *dir, t_mle *env);

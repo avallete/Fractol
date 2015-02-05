@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:12:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:45:28 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:35:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-void	check_namebis(char *name, int *i)
+static void	check_namebis(char *name, int *i)
 {
 	if (!(ft_strcmp("Tetration", name)))
 		*i = 9;
@@ -28,7 +28,7 @@ void	check_namebis(char *name, int *i)
 		*i = 0;
 }
 
-void	check_name(char *name, int *i)
+void		check_name(char *name, int *i)
 {
 	if (!(ft_strcmp("Mandelbrot", name)))
 		*i = 1;
@@ -48,7 +48,7 @@ void	check_name(char *name, int *i)
 		check_namebis(name, i);
 }
 
-void	print_fract(t_mle *env)
+void		print_fract(t_mle *env)
 {
 	if (*C_IT(env) == 1)
 		print_mandelbrot(env);

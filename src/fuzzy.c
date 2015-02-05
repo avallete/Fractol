@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 11:25:03 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 11:25:45 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:32:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_fuzzy(t_nc z, t_mle *env)
+static unsigned int	it_fuzzy(t_nc z, t_mle *env)
 {
 	unsigned int	cm;
 	t_nc			tmp;
@@ -28,7 +28,7 @@ unsigned int	it_fuzzy(t_nc z, t_mle *env)
 	return (cm);
 }
 
-void			create_fuzzy(t_mle *env)
+static void			create_fuzzy(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -52,7 +52,7 @@ void			create_fuzzy(t_mle *env)
 	}
 }
 
-void			print_fuzzy(t_mle *env)
+void				print_fuzzy(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

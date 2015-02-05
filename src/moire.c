@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 12:00:11 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:35:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:33:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_moire(t_nc z, t_nc c, t_mle *env)
+static unsigned int	it_moire(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int	cm;
 	long double		tmp;
@@ -31,7 +31,7 @@ unsigned int	it_moire(t_nc z, t_nc c, t_mle *env)
 	return (cm);
 }
 
-void			create_moire(t_mle *env)
+static void			create_moire(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -58,7 +58,7 @@ void			create_moire(t_mle *env)
 	}
 }
 
-void			print_moire(t_mle *env)
+void				print_moire(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

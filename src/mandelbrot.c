@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 10:32:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:34:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:24:06 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ unsigned int	it_mandel(t_nc z, t_nc c, t_mle *env)
 	return (cm);
 }
 
-void			create_mandelbrot(t_mle *env)
+static void		create_mandelbrot(t_mle *env)
 {
 	int				y;
 	int				x;

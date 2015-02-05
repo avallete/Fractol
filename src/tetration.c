@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 13:29:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:45:24 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:33:20 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int		it_tetration(t_nc z, t_mle *env)
+static unsigned int		it_tetration(t_nc z, t_mle *env)
 {
 	unsigned int	cm;
 	t_nc			tmp;
@@ -29,7 +29,7 @@ unsigned int		it_tetration(t_nc z, t_mle *env)
 	return (cm);
 }
 
-void				create_tetration(t_mle *env)
+static void				create_tetration(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -53,7 +53,7 @@ void				create_tetration(t_mle *env)
 	}
 }
 
-void				print_tetration(t_mle *env)
+void					print_tetration(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{

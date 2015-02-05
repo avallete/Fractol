@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 11:53:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:33:43 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/05 13:30:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_fractol.h>
 
-unsigned int	it_croix(t_nc z, t_nc c, t_mle *env)
+static unsigned int	it_croix(t_nc z, t_nc c, t_mle *env)
 {
 	unsigned int	cm;
 	t_nc			tmp;
@@ -39,7 +39,7 @@ unsigned int	it_croix(t_nc z, t_nc c, t_mle *env)
 	return (cm);
 }
 
-void			create_croix(t_mle *env)
+static void			create_croix(t_mle *env)
 {
 	int				y;
 	int				x;
@@ -66,7 +66,7 @@ void			create_croix(t_mle *env)
 	}
 }
 
-void			print_croix(t_mle *env)
+void				print_croix(t_mle *env)
 {
 	if (C_IM(env) && (C_IA(env)))
 	{
