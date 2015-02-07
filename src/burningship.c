@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/02 11:34:52 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 13:30:21 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/07 16:22:55 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void			create_burningship(t_mle *env)
 		{
 			z.r = x / ZOOM_X(C_FR(env)->x1, C_FR(env)->x2) + C_FR(env)->x1;
 			z.i = y / ZOOM_Y(C_FR(env)->y1, C_FR(env)->y2) + C_FR(env)->y1;
-			c.r = 1.941 - C_IF(env).cr;
-			c.i = 0.004 + C_IF(env).ci;
+			c.r = 1.625 - C_IF(env).cr;
+			c.i = 0.035 + C_IF(env).ci;
 			cm = it_burningship(z, c, env);
 			init_colors(env, cm);
 			draw_to_img(env, PLACE_IMG(x, y), C_FR(env)->rgb);
