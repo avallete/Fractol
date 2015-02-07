@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 11:04:28 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:38:14 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/07 16:07:16 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,29 @@ void	controled_zoom(t_mle *env, int x, int y, int mode)
 
 int		modify_xy_fract(int x, int y, t_mle *env)
 {
+	static int	c = 0;
 	long double x1;
 	long double y1;
 
-	x1 = x;
-	y1 = y;
-	x1 /= WINDOW_W;
-	y1 /= WINDOW_H;
-	while (x1 > 1)
-		x1 /= 10;
-	while (y1 > 1)
-		y1 /= 10;
-	while (x1 < -1)
-		x1 *= 10;
-	while (y1 < -1)
-		y1 *= 10;
-	C_IF(env).cr = x1;
-	C_IF(env).ci = y1;
-	expose_hook(env);
+	c++;
+	if (c == 5)
+	{
+		c = 0;
+		x1 = x;
+		y1 = y;
+		x1 /= WINDOW_W;
+		y1 /= WINDOW_H;
+		while (x1 > 1)
+			x1 /= 10;
+		while (y1 > 1)
+			y1 /= 10;
+		while (x1 < -1)
+			x1 *= 10;
+		while (y1 < -1)
+			y1 *= 10;
+		C_IF(env).cr = x1;
+		C_IF(env).ci = y1;
+		expose_hook(env);
+	}
 	return (0);
 }
