@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 12:00:11 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/08 12:09:35 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/08 12:13:58 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static unsigned int	it_moire(t_nc z, t_nc c, t_mle *env)
 		z.r = z.r * z.r - z.i * z.i;
 		z.i = 2 * z.i * tmp;
 		z.r = (z.r * z.r) + c.r;
-		z.i = sqrt((z.i * z.i))*2 - c.i;
+		z.i = sqrt((z.i * z.i)) * 2 - c.i;
 		cm++;
 	}
 	return (cm);
