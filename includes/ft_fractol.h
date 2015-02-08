@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:15:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 13:35:34 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/08 12:12:55 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define CO_FUZZ(x)	RGB(C_FR(x)->rgb, 248 - C_CO(x), 148, 78, 255)
 # define CO_TETR(x)	RGB(C_FR(x)->rgb, 65, 131, 215 - C_CO(x), 255)
 # define CO_GLYN(x)	RGB(C_FR(x)->rgb, 46, 204 -  C_CO(x), 113, 255)
-# define CO_MOIR(x)	RGB(C_FR(x)->rgb, 230 -  C_CO(x), 126, 34, 255)
+# define CO_MOIR(x)	RGB(C_FR(x)->rgb, 232 -  C_CO(x), 76, 109, 255)
 # define CO_JUBI(x)	RGB(C_FR(x)->rgb, 52, 152, 219 - C_CO(x), 255)
 # define CO_SOLE(x)	RGB(C_FR(x)->rgb, 241 -  C_CO(x), 196, 15, 255)
 # define DEGRR(x)	(((cm*C_FR(x)->rgb[0])/C_FR(env)->it))

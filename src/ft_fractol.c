@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 16:10:15 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 12:41:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/08 12:03:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_usage(void)
 {
 	ft_putsterr("Usage: ./Fractol [fractal name]\n");
 	ft_putsterr("Corrects names : Mandelbrot, Julia, Newton, \"Burning Ship\"\
-, Croix, Fuzzy, Tetration, Glynn, JuliaBis, Lapin, Soleil\n");
+, Croix, Fuzzy, Tetration, Glynn, JuliaBis, Lapin, Soleil, Moire\n");
 }
 
 int		ft_fractol(t_mle *env, char *name)
