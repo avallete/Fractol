@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 11:25:03 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 13:32:52 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/08 10:58:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static unsigned int	it_fuzzy(t_nc z, t_mle *env)
 	cm = 0;
 	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 1.1)
 	{
-		tmp.r = 1 - fabs(z.r - z.i);
-		z.i = 1 - fabs(z.i - (1 - z.r));
+		tmp.r = 1 - fabs(z.r - z.i) - C_IF(env).cr;
+		z.i = 1 - fabs(z.i - (1 - z.r) + C_IF(env).ci);
 		z.r = tmp.r;
 		cm++;
 	}
