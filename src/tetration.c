@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 13:29:45 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/05 13:33:20 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/08 11:43:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static unsigned int		it_tetration(t_nc z, t_mle *env)
 	t_nc			tmp;
 
 	cm = 0;
-	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 90000000000)
+	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 100000)
 	{
 		tmp.r = exp(-0.5 * M_PI * z.i);
 		tmp.i = M_PI * z.r / 2;
-		z.r = tmp.r * cos(tmp.i);
-		z.i = tmp.r * sin(tmp.i);
+		z.r = (tmp.r * cos(tmp.i)) + C_IF(env).cr;
+		z.i = (tmp.r * sin(tmp.i)) - C_IF(env).ci;
 		cm++;
 	}
 	return (cm);
