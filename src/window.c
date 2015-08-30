@@ -38,8 +38,8 @@ int		key_hook(int keycode, t_mle *env)
 		keycode == K_C ? modify_color(env, 2) : modify_color(env, -2);
 	if (keycode == K_P || keycode == K_R)
 		keycode == K_P ? C_CO(env) = 0 : key_reset(env);
-	mlx_destroy_image(env->mlx, C_IM(env));
-	(C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
+//	mlx_destroy_window(env->mlx, C_IM(env));
+//	(C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
 	expose_hook(env);
 	return (0);
 }

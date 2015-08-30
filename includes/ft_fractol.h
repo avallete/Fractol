@@ -12,13 +12,13 @@
 
 #ifndef FT_FRACTOL_H
 # define FT_FRACTOL_H
-# include <libft.h>
-# include <X.h>
+# include <math.h>
+# include "libft.h"
+# include <X11/X.h>
 # include <mlx.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <math.h>
 # define WINDOW_W 500
 # define WINDOW_H 500
 # define IMG_MAX ((WINDOW_W * WINDOW_H) * 4)

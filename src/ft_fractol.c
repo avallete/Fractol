@@ -33,7 +33,7 @@ int		ft_fractol(t_mle *env, char *name)
 	{
 		init_ci(&C_IF(env), *C_IT(env));
 		init_fra(C_FR(env), *C_IT(env));
-		C_IM(env) ? mlx_destroy_image(env->mlx, C_IM(env)), (C_IM(env) = NULL) \
+		C_IM(env) ? mlx_destroy_window(env->mlx, C_IM(env)), (C_IM(env) = NULL) \
 		: (C_IM(env) = mlx_new_image(env->mlx, WINDOW_W, WINDOW_H));
 		if (C_IM(env) && ((C_IA(env) = mlx_get_data_addr(C_IM(env), \
 											C_IP(env), C_IL(env), C_IC(env)))))

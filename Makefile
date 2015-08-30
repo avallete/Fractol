@@ -1,6 +1,5 @@
-LIBMLX:=-L /usr/X11/lib -lmlx -lXext -lX11
-SRC_PATH:=./src/
-SRC_NAME:=argument.c\
+SRC_PATH=./src/
+SRC_NAME=argument.c\
 burningship.c\
 calnc.c\
 croix.c\
@@ -24,19 +23,19 @@ tetration.c\
 window.c
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH =./obj/
-OBJ_NAME=$(SRC_NAME:.c=.o)
+OBJ_NAME:=$(SRC_NAME:.c=.o)
 INC_PATH=./includes/ /opt/X11/include/X11
 INC_NAME=libft.h\
 		ft_printf.h\
 		X.h\
 		ft_fractol.h
-SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
-OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
-INCF=$(addprefix $(INC_PATH), $(INC_NAME))
-INC=$(addprefix -I, $(INC_PATH))
-LIBMLX:=-L /usr/X11/lib -lmlx -lXext -lX11
-LIBFT:=-L libft -lftprintf
-CFLAGS=-Wall -Wextra -Werror
+SRC:=$(addprefix $(SRC_PATH), $(SRC_NAME))
+OBJ:=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
+INCF:=$(addprefix $(INC_PATH), $(INC_NAME))
+INC:=$(addprefix -I, $(INC_PATH))
+LIBMLX=-L/usr/lib64/X11 -lX11 -lXext -L/usr/lib64/ -lmlx
+LIBFT=-L libft -lftprintf
+CFLAGS= -g
 CC=-gcc
 NAME=Fractol
 RED=\033[0;31m
@@ -50,7 +49,7 @@ all: $(NAME)
 $(NAME):$(OBJ)
 	@make -s -C libft
 	@echo "${RED}Compile $(NAME) with $(CFLAGS)${NC}";
-	@gcc $(CLFAGS) $(OBJ) $(INC) $(LIBMLX) $(LIBFT) -o $(NAME)
+	@gcc $(CLFAGS) $(OBJ) $(INC) -lm $(LIBMLX) $(LIBFT) -o $(NAME)
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
