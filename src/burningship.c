@@ -21,7 +21,7 @@ static unsigned int	it_burningship(t_nc z, t_nc c, t_mle *env)
 	while (cm < C_FR(env)->it && (z.r * z.r + z.i * z.i) < 10)
 	{
 		tmp.r = (z.r * z.r) - (z.i * z.i) - c.r;
-		tmp.i = 2 * fabs(z.r * z.i) - c.i;
+		tmp.i = 2 * fabsl(z.r * z.i) - c.i;
 		z.r = tmp.r;
 		z.i = tmp.i;
 		cm++;

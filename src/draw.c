@@ -16,8 +16,8 @@ void	connect_pts(t_mle *env, t_nc start, t_nc end)
 {
 	int dir[4];
 
-	dir[0] = abs(end.r - start.r);
-	dir[1] = abs(end.i - start.i);
+	dir[0] = fabsl(end.r - start.r);
+	dir[1] = fabsl(end.i - start.i);
 	dir[2] = (dir[0] > 0) ? 1 : -1;
 	dir[3] = (dir[1] > 0) ? 1 : -1;
 	draw_to_img(env, PLACE_IMG(start.r, start.i), C_FR(env)->rgb);

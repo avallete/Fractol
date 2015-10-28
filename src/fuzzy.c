@@ -20,8 +20,8 @@ static unsigned int	it_fuzzy(t_nc z, t_mle *env)
 	cm = 0;
 	while (cm < C_FR(env)->it && hypot(z.r, z.i) < 1.1)
 	{
-		tmp.r = 1 - fabs(z.r - z.i) - C_IF(env).cr;
-		z.i = 1 - fabs(z.i - (1 - z.r) + C_IF(env).ci);
+		tmp.r = 1 - fabsl(z.r - z.i) - C_IF(env).cr;
+		z.i = 1 - fabsl(z.i - (1 - z.r) + C_IF(env).ci);
 		z.r = tmp.r;
 		cm++;
 	}
